@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spartacus Music Rádió</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="A Spartacus Music Rádió hivatalos weboldala. Látogass el hozzánk: https://spartacusmusicradio.com">
+    <style>
+        body {
+            background-color: #1e1e2f;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #27293d;
+            padding: 20px;
+            text-align: center;
+        }
+        header img {
+            max-width: 150px;
+        }
+        h1 {
+            color: #f9aa33;
+        }
+        a {
+            color: #f9aa33;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #27293d;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .program {
+            background-color: #2c2f4b;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        .program img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        button {
+            background-color: #f9aa33;
+            color: #1e1e2f;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #d98f29;
+        }
+        #chat-section {
+            background-color: #2c2f4b;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        #chat-window {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #444;
+            padding: 10px;
+            background-color: #1e1e2f;
+            margin-bottom: 10px;
+        }
+        #chat-input {
+            display: flex;
+            gap: 10px;
+        }
+        #chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #27293d;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Spartacus Music Rádió logója">
+        <h1>Üdvözlünk a Spartacus Music Rádió oldalán!</h1>
+        <p>Látogass el hozzánk: <a href="https://spartacusmusicradio.com" target="_blank">spartacusmusicradio.com</a></p>
+    </header>
+    <main>
+        <section id="music-player-section">
+            <h2>Zenelejátszó</h2>
+            <div id="music-player">
+                <p><strong>Jelenlegi szám:</strong> <span id="current-song">N/A</span></p>
+                <p><strong>Következő szám:</strong> <span id="next-song">N/A</span></p>
+                <audio id="audio-player" controls>
+                    <source src="https://cast3.asurahosting.com/proxy/gyula/stream" type="audio/mpeg">
+                    A böngésződ nem támogatja a zenelejátszót.
+                </audio>
+            </div>
+        </section>
+
+        <section id="chat-section">
+            <h2>Chat</h2>
+            <div id="chat-window">
+                <div id="messages">
+                    <!-- Üzenetek jelennek meg itt -->
+                </div>
+            </div>
+            <div id="chat-input">
+                <input type="text" id="message-input" placeholder="Írj egy üzenetet...">
+                <button id="send-button">Küldés</button>
+            </div>
+        </section>
+
+        <section id="program-list-section">
+            <h2>Műsorfüzet</h2>
+            <div id="program-list">
+                <div class="program">
+                    <img src="example.jpg" alt="Előadó képe" class="program-image">
+                    <h3 class="program-title">Műsor címe</h3>
+                    <p class="program-presenter">Előadó neve és titulusa</p>
+                </div>
+                <!-- Új programok itt szerkeszthetők -->
+            </div>
+        </section>
+
+        <section id="contact-section">
+            <h2>Elérhetőség</h2>
+            <p>Facebook: <a href="https://facebook.com/spartacusmusicradio" target="_blank">facebook.com/spartacusmusicradio</a></p>
+            <p>Telefon: <a href="tel:+123456789">+123456789</a></p>
+            <p>Email: <a href="mailto:info@spartacusmusicradio.com">info@spartacusmusicradio.com</a></p>
+        </section>
+
+        <section id="request-song-section">
+            <h2>Számkérés</h2>
+            <form id="song-request-form">
+                <label for="request-email">Email:</label>
+                <input type="email" id="request-email" required>
+
+                <label for="request-song">Kívánt szám:</label>
+                <input type="text" id="request-song" required>
+
+                <button type="submit">Küldés</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Spartacus Music Rádió | <a href="https://spartacusmusicradio.com" target="_blank">spartacusmusicradio.com</a></p>
+    </footer>
+    <script>
+        document.getElementById('send-button').addEventListener('click', () => {
+            const message = document.getElementById('message-input').value;
+            if (message.trim() !== "") {
+                const messageElement = document.createElement('div');
+                messageElement.textContent = `Te: ${message}`;
+                document.getElementById('messages').appendChild(messageElement);
+                document.getElementById('message-input').value = "";
+            }
+        });
+    </script>
+</body>
+</html>
